@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_startFragment_to_typesFragment"
             app:destination="@id/typesFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_strategyFragment"
+            app:destination="@id/strategyFragment" />
     </fragment>
     <fragment
         android:id="@+id/typesFragment"
@@ -22,5 +25,42 @@
         <action
             android:id="@+id/action_typesFragment_to_startFragment"
             app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_typesFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.infobets.presentation.screens.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_typesFragment"
+            app:destination="@id/typesFragment" />
+        <argument android:name="name" />
+        <argument android:name="details" />
+    </fragment>
+    <fragment
+        android:id="@+id/strategyFragment"
+        android:name="com.example.infobets.presentation.screens.StrategyFragment"
+        android:label="fragment_strategy"
+        tools:layout="@layout/fragment_strategy" >
+        <action
+            android:id="@+id/action_strategyFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_strategyFragment_to_detailsStrategyFragment"
+            app:destination="@id/detailsStrategyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsStrategyFragment"
+        android:name="com.example.infobets.presentation.screens.DetailsStrategyFragment"
+        android:label="fragment_details_strategy"
+        tools:layout="@layout/fragment_details_strategy" >
+        <action
+            android:id="@+id/action_detailsStrategyFragment_to_strategyFragment"
+            app:destination="@id/strategyFragment" />
+        <argument android:name="name" />
+        <argument android:name="details" />
     </fragment>
 </navigation>

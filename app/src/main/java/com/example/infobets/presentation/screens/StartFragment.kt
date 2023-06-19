@@ -28,6 +28,10 @@ class StartFragment : Fragment() {
         binding.btnTypes.setOnClickListener{
         MAIN.navController.navigate(R.id.action_startFragment_to_typesFragment)
         }
+
+        binding.btnStrategyBets.setOnClickListener {
+            MAIN.navController.navigate(R.id.action_startFragment_to_strategyFragment)
+        }
     }
 
 }
