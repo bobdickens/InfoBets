@@ -9,5 +9,18 @@
         android:id="@+id/startFragment"
         android:name="com.example.infobets.presentation.screens.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_typesFragment"
+            app:destination="@id/typesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/typesFragment"
+        android:name="com.example.infobets.presentation.screens.TypesFragment"
+        android:label="fragment_types"
+        tools:layout="@layout/fragment_types" >
+        <action
+            android:id="@+id/action_typesFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
 </navigation>

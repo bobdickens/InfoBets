@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.MAIN
 import com.example.infobets.R
 import com.example.infobets.databinding.FragmentStartBinding
 
@@ -25,7 +26,7 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnTypes.setOnClickListener{
-
+        MAIN.navController.navigate(R.id.action_startFragment_to_typesFragment)
         }
     }
 
