@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_startFragment_to_strategyFragment"
             app:destination="@id/strategyFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_FAQFragment"
+            app:destination="@id/FAQFragment" />
     </fragment>
     <fragment
         android:id="@+id/typesFragment"
@@ -62,5 +65,14 @@
             app:destination="@id/strategyFragment" />
         <argument android:name="name" />
         <argument android:name="details" />
+    </fragment>
+    <fragment
+        android:id="@+id/FAQFragment"
+        android:name="com.example.infobets.presentation.screens.FAQFragment"
+        android:label="fragment_f_a_q"
+        tools:layout="@layout/fragment_f_a_q" >
+        <action
+            android:id="@+id/action_FAQFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
 </navigation>

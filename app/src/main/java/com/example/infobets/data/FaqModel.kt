@@ -4,3 +4,4 @@ data class FaqModel (
     val name: String,
     val descr: String
         )
+

@@ -4,46 +4,46 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.Keep
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.infobets.R
+import com.example.infobets.data.FaqModel
+import com.example.infobets.databinding.ItemBinding
 
 
-class Adapter(private val dataSet: Array<String>) :
-    RecyclerView.Adapter<Adapter.ViewHolder>() {
+@Keep
+class Adapter: ListAdapter<FaqModel, Adapter.Holder>(Comparator()){
+    class Holder(view: View) : RecyclerView.ViewHolder(view){
+        val binding = ItemBinding.bind(view)
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder)
-     */
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
-        val textViewDet: TextView
+        fun bind (item: FaqModel) = with(binding){
+            tvDetails.text = item.descr
+            textName.text = item.name
 
-        init {
-            // Define click listener for the ViewHolder's View
-            textView = view.findViewById(R.id.tv_name)
-            textViewDet = view.findViewById(R.id.tv_details)
         }
     }
 
-    // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item, viewGroup, false)
+    class Comparator : DiffUtil.ItemCallback<FaqModel>(){
+        override fun areItemsTheSame(oldItem: FaqModel, newItem: FaqModel): Boolean {
+            return  oldItem == newItem
 
-        return ViewHolder(view)
+        }
+
+        override fun areContentsTheSame(oldItem: FaqModel, newItem: FaqModel): Boolean {
+            return oldItem == newItem
+        }
+
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-        viewHolder.textView.text = dataSet[position]
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
+        return Holder(view)
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = dataSet.size
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.bind(getItem(position))
 
+    }
 }
